@@ -671,13 +671,13 @@
     border-color: var(--white);
   }
 
-  .carousel-right { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  .carousel-right { display: flex; flex-direction: column; gap: 20px; }
 
-  .carousel-descs { position: relative; min-height: 5rem; }
+  .carousel-descs { position: relative; min-height: 130px; width: 100%; }
 
   .carousel-desc {
     position: absolute;
-    top: 0; left: 0;
+    top: 0; left: 0; right: 0;
     font-size: 0.9375rem;
     line-height: 1.7;
     color: rgba(255,255,255,0.65);
@@ -685,7 +685,6 @@
     transform: translateY(8px);
     transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
     pointer-events: none;
-    max-width: 480px;
   }
   .carousel-desc.active {
     opacity: 1;
