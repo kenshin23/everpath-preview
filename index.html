@@ -752,6 +752,70 @@
     .nav-links .nav-hide { display: none; }
   }
 
+  /* ── FOUNDER ─────────────────────────────── */
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: center;
+    padding-top: 40px;
+  }
+
+  .founder-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+
+  .founder-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .founder-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .founder-photo-placeholder span {
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+  }
+
+  .founder-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.25rem, 4.5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    margin-bottom: 32px;
+  }
+
+  .founder-content p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 20px;
+    max-width: 480px;
+  }
+
+  .founder-content p strong {
+    color: var(--black);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .founder-grid { grid-template-columns: 1fr; }
+    .founder-photo { aspect-ratio: 4/3; }
+  }
+
   @media (max-width: 600px) {
     :root { --pad-x: 20px; }
     .cards-grid { grid-template-columns: 1fr; }
@@ -906,6 +970,28 @@
   </div>
 </section>
 
+<!-- ── FOUNDER ──────────────────────────────────── -->
+<section id="founder">
+  <div class="section-label dark">Meet the Founder</div>
+  <div class="founder-grid">
+    <div class="founder-photo">
+      <div class="founder-photo-placeholder">
+        <span>Founder Photo</span>
+      </div>
+    </div>
+    <div class="founder-content">
+      <h2 class="founder-headline">Strategic Support.<br>Meaningful Outcomes.</h2>
+      <p><strong>Hi, I'm the Founder and CEO of EverPath Personalized Services, and an authorized Independent Support Broker in New York State.</strong></p>
+      <p>As a certified Self-Direction broker, I help individuals with disabilities and their families navigate the OPWDD Self-Direction program — empowering people to design the supports they need to live the life they choose.</p>
+      <p>My background in Industrial Engineering gives me a systems-thinking approach to every plan I build: efficient, comprehensive, and designed to grow with you.</p>
+      <a href="#contact" class="arrow-cta" style="color:var(--black); margin-top:8px;">
+        Work With Me
+        <span class="circle">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ── INSIGHTS ───────────────────────────────── -->
 <section id="insights" class="gray">
   <div class="insights-header">
@@ -981,6 +1067,7 @@
         <li><a href="#about">The Firm</a></li>
         <li><a href="#services">Our Services</a></li>
         <li><a href="#who-we-serve">Who We Serve</a></li>
+        <li><a href="#founder">The Founder</a></li>
         <li><a href="#insights">Insights</a></li>
       </ul>
     </div>
