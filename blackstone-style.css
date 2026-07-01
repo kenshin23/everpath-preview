@@ -1,0 +1,412 @@
+/*
+ * EverPath Personalized Services — Blackstone-inspired theme
+ *
+ * HOW TO APPLY:
+ * 1. FONTS — Go to Settings > Advanced > Code Injection > Header, paste:
+ *
+ *    <link rel="preconnect" href="https://fonts.googleapis.com">
+ *    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ *    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+ *
+ * 2. CSS — Go to Design > Custom CSS, paste everything below the dashed line.
+ *
+ * 3. SECTIONS — In the page editor, set each section's theme:
+ *    - Hero / feature sections  → "Black" theme
+ *    - Body content sections    → "White" theme
+ *    - Alternating call-outs    → "Black" theme
+ *    - Footer                   → "Black" theme
+ */
+
+/* ─────────────────────────────────────────────
+   COLOR PALETTE  (overrides Squarespace tokens)
+   ───────────────────────────────────────────── */
+:root {
+  --white-hsl:              0, 0%, 100%;   /* pure white */
+  --lightAccent-hsl:        0, 0%, 95%;    /* light gray */
+  --accent-hsl:             0, 0%, 12%;    /* near black (used for accents on light bg) */
+  --darkAccent-hsl:         0, 0%, 6%;     /* very dark */
+  --black-hsl:              0, 0%, 3%;     /* near-pure black */
+  --safeLightAccent-hsl:    0, 0%, 100%;
+  --safeDarkAccent-hsl:     0, 0%, 10%;
+  --safeInverseAccent-hsl:  0, 0%, 100%;
+  --safeInverseLightAccent-hsl: 0, 0%, 3%;
+  --safeInverseDarkAccent-hsl:  0, 0%, 100%;
+}
+
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY
+   ───────────────────────────────────────────── */
+
+/* Headings: light-weight editorial serif (≈ Blackstone's Sanomat) */
+h1, h2, h3, h4, h5, h6,
+.sqsrte-paragraph h1,
+.sqsrte-paragraph h2,
+.sqsrte-paragraph h3 {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+h1 { font-size: clamp(3rem, 7vw, 6rem) !important; }
+h2 { font-size: clamp(2rem, 4.5vw, 4rem) !important; }
+h3 { font-size: clamp(1.4rem, 3vw, 2.5rem) !important; }
+
+/* Body + nav: clean geometric sans (≈ Blackstone's Guardian Sans) */
+body, p, a, li, td, input, textarea, select, button,
+.sqsrte-paragraph,
+.header-nav-item a,
+.sqs-block-content {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif !important;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+
+/* ─────────────────────────────────────────────
+   NAVIGATION
+   ───────────────────────────────────────────── */
+.header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+/* Nav links */
+.header-nav-item a {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.9375rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  color: #000000 !important;
+}
+
+.header-nav-item a:hover {
+  opacity: 0.6 !important;
+}
+
+/* Site title / logo — bordered box like Blackstone */
+.header-title a,
+.site-title a {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.08em !important;
+  color: #000000 !important;
+  border: 1px solid #000000;
+  padding: 6px 14px !important;
+  display: inline-block;
+}
+
+.header-title a:hover,
+.site-title a:hover {
+  opacity: 0.7 !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   PAGE SECTIONS
+   ───────────────────────────────────────────── */
+.page-section {
+  padding-top: 70px !important;
+  padding-bottom: 70px !important;
+}
+
+/* Ensure black sections get true black */
+[data-section-theme="black"],
+[data-section-theme="darkAccent"] {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-section-theme="black"] h1,
+[data-section-theme="black"] h2,
+[data-section-theme="black"] h3,
+[data-section-theme="black"] p,
+[data-section-theme="black"] a,
+[data-section-theme="darkAccent"] h1,
+[data-section-theme="darkAccent"] h2,
+[data-section-theme="darkAccent"] h3,
+[data-section-theme="darkAccent"] p,
+[data-section-theme="darkAccent"] a {
+  color: #ffffff !important;
+}
+
+/* White sections get pure white */
+[data-section-theme="white"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   SECTION LABELS  (eyebrow text pattern)
+   "ABOUT THE FIRM ────"
+   ───────────────────────────────────────────── */
+/*
+ * To create a Blackstone-style section label, use a Text block in Squarespace,
+ * type your label text, and apply a Paragraph style. Then add a class
+ * "section-label" via the block's Advanced settings.
+ */
+.section-label,
+.sqs-block-content .section-label p,
+.sqs-block-content p.section-label {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.6875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-label::after {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+
+/* ─────────────────────────────────────────────
+   LARGE DISPLAY STAT BLOCKS
+   (e.g. "$1.3T / Assets Under Management")
+   ───────────────────────────────────────────── */
+.display-stat-number {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(3.5rem, 8vw, 7rem) !important;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.display-stat-label {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  margin-top: 8px;
+}
+
+
+/* ─────────────────────────────────────────────
+   BUTTONS / CTAs
+   ───────────────────────────────────────────── */
+/* Primary button: filled black */
+.sqs-block-button-element--medium.sqs-block-button-element--primary,
+.sqs-block-button-element--large.sqs-block-button-element--primary {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  border-radius: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 14px 32px !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.sqs-block-button-element--medium.sqs-block-button-element--primary:hover,
+.sqs-block-button-element--large.sqs-block-button-element--primary:hover {
+  background-color: transparent !important;
+  color: #000000 !important;
+}
+
+/* On dark sections, invert button */
+[data-section-theme="black"] .sqs-block-button-element--primary,
+[data-section-theme="darkAccent"] .sqs-block-button-element--primary {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+[data-section-theme="black"] .sqs-block-button-element--primary:hover,
+[data-section-theme="darkAccent"] .sqs-block-button-element--primary:hover {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+/* Secondary / outline button */
+.sqs-block-button-element--medium.sqs-block-button-element--secondary,
+.sqs-block-button-element--large.sqs-block-button-element--secondary {
+  background-color: transparent !important;
+  border: 1px solid currentColor !important;
+  border-radius: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 14px 32px !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   ARROW CTA  (text + circle arrow)
+   Add class "arrow-cta" to a Text block containing a link
+   ───────────────────────────────────────────── */
+.arrow-cta a,
+.sqs-block-content .arrow-cta a {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.arrow-cta a::after {
+  content: '→';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.arrow-cta a:hover::after {
+  transform: translateX(4px);
+}
+
+
+/* ─────────────────────────────────────────────
+   HORIZONTAL RULES / DIVIDERS
+   ───────────────────────────────────────────── */
+.sqs-block-horizontalrule hr {
+  border: none !important;
+  border-top: 1px solid currentColor !important;
+  opacity: 0.15 !important;
+  margin: 0 !important;
+}
+
+/* Card dividers on dark sections */
+[data-section-theme="black"] .sqs-block-horizontalrule hr,
+[data-section-theme="darkAccent"] .sqs-block-horizontalrule hr {
+  opacity: 0.25 !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   NEWS / ARTICLE CARDS
+   ───────────────────────────────────────────── */
+.sqs-block-summary-v2 .summary-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-size: 1.5rem !important;
+  line-height: 1.2;
+}
+
+.sqs-block-summary-v2 .summary-metadata {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  opacity: 0.6;
+}
+
+.sqs-block-summary-v2 .summary-read-more a {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.8125rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   FORMS  (newsletter / contact)
+   ───────────────────────────────────────────── */
+.sqs-block-form input[type="text"],
+.sqs-block-form input[type="email"],
+.sqs-block-form textarea,
+.sqs-block-form select {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid currentColor !important;
+  border-radius: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.9375rem !important;
+  padding: 12px 0 !important;
+}
+
+.sqs-block-form input::placeholder,
+.sqs-block-form textarea::placeholder {
+  opacity: 0.5 !important;
+}
+
+.sqs-block-form .form-submit .sqs-editable-button {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 14px 40px !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   IMAGES
+   ───────────────────────────────────────────── */
+/* Remove any default rounded corners */
+.sqs-block-image img,
+.summary-thumbnail img,
+img {
+  border-radius: 0 !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────── */
+footer.sections,
+.footer-section {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+footer h1, footer h2, footer h3,
+footer p, footer a, footer li {
+  color: #ffffff !important;
+}
+
+footer a:hover {
+  opacity: 0.6 !important;
+  text-decoration: none !important;
+}
+
+footer .sqs-block-horizontalrule hr {
+  opacity: 0.2 !important;
+  border-top-color: #ffffff !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   MOBILE RESPONSIVE ADJUSTMENTS
+   ───────────────────────────────────────────── */
+@media (max-width: 767px) {
+  h1 { font-size: clamp(2.25rem, 10vw, 3.5rem) !important; }
+  h2 { font-size: clamp(1.75rem, 7vw, 2.5rem) !important; }
+
+  .page-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}
