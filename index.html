@@ -49,7 +49,19 @@
     justify-content: space-between;
     padding: 0 var(--pad-x);
     z-index: 100;
+    transition: background .35s ease, color .35s ease, border-color .35s ease;
   }
+
+  /* Scroll-aware light state (over white/gray sections) */
+  nav.nav-light {
+    background: var(--white);
+    color: var(--black);
+    border-bottom-color: rgba(0,0,0,0.08);
+  }
+  nav.nav-light .nav-logo { border-color: var(--black); }
+  nav.nav-light .nav-logo img { filter: none; }
+  nav.nav-light .nav-cta { border-color: var(--black); }
+  nav.nav-light .nav-cta:hover { background: var(--black); color: var(--white); }
 
   .nav-logo {
     display: flex;
@@ -1132,6 +1144,36 @@
     dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
 
     timer = setInterval(advance, 5000);
+  })();
+
+  // Scroll-aware nav: switch to light theme while floating over light sections
+  (function () {
+    const nav = document.querySelector('nav');
+    const lightSections = Array.from(
+      document.querySelectorAll('#about, #who-we-serve, #founder, #insights')
+    );
+    let ticking = false;
+
+    function update() {
+      const probe = nav.offsetHeight / 2; // vertical center of the nav bar
+      const overLight = lightSections.some(sec => {
+        const r = sec.getBoundingClientRect();
+        return r.top <= probe && r.bottom >= probe;
+      });
+      nav.classList.toggle('nav-light', overLight);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   })();
 </script>
 </body>
