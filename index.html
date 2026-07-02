@@ -332,6 +332,50 @@
     letter-spacing: 0.03em;
   }
 
+  /* ── MARQUEE (scrolling text band) ───────── */
+  .marquee {
+    background: var(--gray-light);
+    overflow: hidden;
+    padding: clamp(22px, 3.5vw, 40px) 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 34s linear infinite;
+    will-change: transform;
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-group {
+    display: flex;
+    align-items: center;
+    gap: clamp(32px, 5vw, 72px);
+    padding-right: clamp(32px, 5vw, 72px);
+    flex-shrink: 0;
+  }
+  .marquee-item {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.2vw, 2.75rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    white-space: nowrap;
+  }
+  .marquee-star {
+    font-size: 0.6em;
+    color: var(--gray-mid);
+    line-height: 1;
+  }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
   /* ── WHO WE SERVE ────────────────────────── */
   .serve-grid {
     display: grid;
@@ -953,6 +997,26 @@
     </div>
   </div>
 </section>
+
+<!-- ── MARQUEE ────────────────────────────────── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+    </div>
+    <div class="marquee-group">
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+      <span class="marquee-item">Personalized Services</span><span class="marquee-star">✦</span>
+    </div>
+  </div>
+</div>
 
 <!-- ── DISPLAY ────────────────────────────────── -->
 <div class="display-section">
