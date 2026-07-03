@@ -308,6 +308,40 @@
   }
   @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
+  /* ── CAROUSEL ────────────────────────────── */
+  .carousel { background: var(--black); overflow: hidden; }
+  .carousel-slides { position: relative; width: 100%; aspect-ratio: 16/7; overflow: hidden; }
+  .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s ease; }
+  .carousel-slide.active { opacity: 1; }
+  .carousel-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .carousel-body { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 5vw, 80px); padding: clamp(36px, 5vw, 56px) var(--pad-x); align-items: end; }
+  .carousel-left { display: flex; flex-direction: column; gap: 28px; }
+  .carousel-headlines { position: relative; min-height: 7rem; }
+  .carousel-headline { position: absolute; top: 0; left: 0; font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.15; letter-spacing: 0.01em; text-transform: uppercase; color: var(--white); opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; }
+  .carousel-headline.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .carousel-controls { display: flex; align-items: center; gap: 16px; }
+  .carousel-btn { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.45); border-radius: 50%; background: transparent; color: var(--white); font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; flex-shrink: 0; }
+  .carousel-btn:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+  .carousel-dots { display: flex; align-items: center; gap: 8px; }
+  .carousel-dot { width: 7px; height: 7px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); background: transparent; cursor: pointer; transition: background .3s, border-color .3s; padding: 0; }
+  .carousel-dot.active { background: var(--white); border-color: var(--white); }
+  .carousel-right { display: flex; flex-direction: column; gap: 20px; }
+  .carousel-descs { position: relative; min-height: 130px; width: 100%; }
+  .carousel-desc { position: absolute; top: 0; left: 0; right: 0; font-size: 0.9375rem; line-height: 1.7; color: rgba(255,255,255,0.65); opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; pointer-events: none; }
+  .carousel-desc.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .carousel-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 0.875rem; letter-spacing: 0.04em; color: var(--white); transition: gap .25s; margin-top: 4px; }
+  .carousel-cta:hover { gap: 18px; }
+  .carousel-cta .circle { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: border-color .25s, transform .25s; }
+  .carousel-cta:hover .circle { border-color: var(--white); transform: translateX(4px); }
+  @media (max-width: 900px) {
+    .carousel-slides { aspect-ratio: 4/3; }
+    .carousel-body { grid-template-columns: 1fr; gap: 24px; }
+    .carousel-headlines { min-height: 5rem; }
+    .carousel-descs { position: static; min-height: auto; }
+    .carousel-desc { position: static; opacity: 1; transform: none; display: none; }
+    .carousel-desc.active { display: block; }
+  }
+
   /* ── SERVICE TIERS ───────────────────────── */
   .tier-head { text-align: center; margin-bottom: 24px; }
   .tier-head .section-label { justify-content: center; }
@@ -524,6 +558,50 @@
       Work With Me
       <span class="circle">→</span>
     </a>
+  </div>
+</div>
+
+<!-- ── CAROUSEL ─────────────────────────────── -->
+<div class="carousel">
+  <div class="carousel-slides">
+    <div class="carousel-slide active">
+      <img src="./EverPath Personalized Services_files/unsplash-image-ZWbBxZ6zTwM.jpg" alt="Family at sunset">
+    </div>
+    <div class="carousel-slide">
+      <img src="./EverPath Personalized Services_files/unsplash-image-HJckKnwCXxQ.jpg" alt="Reviewing documents together">
+    </div>
+    <div class="carousel-slide">
+      <img src="./EverPath Personalized Services_files/unsplash-image-3WgkTDw7XyE.jpg" alt="Mother and daughter">
+    </div>
+  </div>
+  <div class="carousel-body">
+    <div class="carousel-left">
+      <div class="carousel-headlines">
+        <h2 class="carousel-headline active">Foundational Guidance</h2>
+        <h2 class="carousel-headline">The Navigation Partnership</h2>
+        <h2 class="carousel-headline">Ongoing Support Brokerage</h2>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carousel-prev" aria-label="Previous slide">←</button>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" aria-label="Slide 1"></button>
+          <button class="carousel-dot" aria-label="Slide 2"></button>
+          <button class="carousel-dot" aria-label="Slide 3"></button>
+        </div>
+        <button class="carousel-btn" id="carousel-next" aria-label="Next slide">→</button>
+      </div>
+    </div>
+    <div class="carousel-right">
+      <div class="carousel-descs">
+        <p class="carousel-desc active">For families just starting to navigate disability services and Medicaid — understand eligibility, next steps, and leave with a personalized action plan.</p>
+        <p class="carousel-desc">For families actively applying for OPWDD/Medicaid Waiver services — step-by-step guidance, document support, and bilingual check-ins so you're never lost in the system.</p>
+        <p class="carousel-desc">For families approved for Self-Direction who want an experienced, trusted, bilingual broker to build and manage your Circle of Support year-round.</p>
+      </div>
+      <a href="#services" class="carousel-cta">
+        Explore Services
+        <span class="circle">→</span>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -837,6 +915,33 @@
 </footer>
 
 <script>
+  // Carousel
+  (function () {
+    const slides    = document.querySelectorAll('.carousel-slide');
+    const headlines = document.querySelectorAll('.carousel-headline');
+    const descs     = document.querySelectorAll('.carousel-desc');
+    const dots      = document.querySelectorAll('.carousel-dot');
+    const prev      = document.getElementById('carousel-prev');
+    const next      = document.getElementById('carousel-next');
+    if (!slides.length) return;
+    let current = 0;
+    let timer;
+
+    function goTo(n) {
+      [slides, headlines, descs, dots].forEach(list => list[current].classList.remove('active'));
+      current = (n + slides.length) % slides.length;
+      [slides, headlines, descs, dots].forEach(list => list[current].classList.add('active'));
+    }
+    function advance() { goTo(current + 1); }
+    function resetTimer() { clearInterval(timer); timer = setInterval(advance, 5000); }
+
+    prev.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+    next.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
+
+    timer = setInterval(advance, 5000);
+  })();
+
   // FAQ accordion
   (function () {
     document.querySelectorAll('.faq-item').forEach(item => {
