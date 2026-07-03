@@ -125,14 +125,12 @@
     letter-spacing: 0.01em;
   }
 
-  .hero-text h1 strong {
-    font-weight: 400;
-  }
+  .hero-text h1 strong { font-weight: 400; }
 
   .hero-text-right {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
     padding-bottom: 8px;
   }
 
@@ -141,6 +139,12 @@
     line-height: 1.75;
     color: rgba(255,255,255,0.65);
     max-width: 480px;
+  }
+  .hero-text-right p.lead {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.3;
   }
 
   .section-label {
@@ -164,16 +168,6 @@
     flex-shrink: 0;
   }
 
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 7.5vw, 6.5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: 0.01em;
-    color: var(--white);
-    margin-bottom: 40px;
-  }
-
   .arrow-cta {
     display: inline-flex;
     align-items: center;
@@ -195,10 +189,6 @@
   }
   .arrow-cta:hover .circle { transform: translateX(4px); }
 
-  /* dark bg variant */
-  .on-dark .section-label { color: var(--white); }
-  .on-dark .arrow-cta { color: var(--white); }
-
   /* ── SECTION SHARED ─────────────────────── */
   section {
     padding: var(--pad-section) var(--pad-x);
@@ -212,125 +202,78 @@
     color: var(--black);
   }
 
-  .section-label.dark {
+  .section-label.dark { color: var(--black); }
+  .section-label.dark::after { background: var(--black); }
+
+  /* ── INTRO ───────────────────────────────── */
+  .intro { text-align: center; }
+  .intro-logo { height: 88px; width: auto; margin: 0 auto 32px; }
+  .intro p {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.35;
+    max-width: 900px;
+    margin: 0 auto;
     color: var(--black);
   }
-  .section-label.dark::after {
-    background: var(--black);
-  }
 
-  /* ── ABOUT ───────────────────────────────── */
-  .about-grid {
+  /* ── CATEGORY TILES ──────────────────────── */
+  .cat-head { max-width: 640px; margin-bottom: 48px; }
+  .cat-head h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 300; line-height: 1.1; margin-bottom: 20px;
+  }
+  .cat-head p { font-size: 1rem; line-height: 1.75; color: #444; max-width: 520px; }
+  .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .cat-tile { position: relative; aspect-ratio: 3/4; overflow: hidden; display: block; }
+  .cat-tile img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(1) contrast(1.05); transition: transform .5s ease;
+  }
+  .cat-tile:hover img { transform: scale(1.05); }
+  .cat-tile::after { content: ''; position: absolute; inset: 0; background: rgba(10,10,10,0.4); }
+  .cat-tile span {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+    font-weight: 300; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--white); text-align: center;
+  }
+  .cat-tile span em { font-style: normal; border-bottom: 2px solid rgba(255,255,255,0.85); padding-bottom: 8px; }
+
+  /* ── FOUNDER ─────────────────────────────── */
+  .founder-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(48px, 6vw, 96px);
-    align-items: start;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: center;
     padding-top: 40px;
   }
-
-  .about-grid h2 {
+  .founder-photo { aspect-ratio: 3/4; overflow: hidden; }
+  .founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .founder-photo-placeholder {
+    width: 100%; height: 100%;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: var(--gray-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .founder-photo-placeholder span {
+    font-size: 0.6875rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gray-mid);
+  }
+  .founder-headline {
     font-family: var(--serif);
     font-size: clamp(2.25rem, 4.5vw, 4rem);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    margin-bottom: 32px;
+    font-weight: 300; line-height: 1.1;
+    letter-spacing: 0.01em; text-transform: uppercase; margin-bottom: 32px;
   }
-
-  .about-grid p {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: #444;
-    max-width: 480px;
-    margin-bottom: 24px;
+  .founder-content p {
+    font-size: 1rem; line-height: 1.75; color: #444;
+    margin-bottom: 20px; max-width: 480px;
   }
-
-  .stat-block {
-    border-top: 1px solid rgba(0,0,0,0.12);
-    padding-top: 32px;
-    margin-top: 48px;
-  }
-  .stat-number {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #555;
-  }
-  .stat-footnote {
-    font-size: 0.75rem;
-    color: #999;
-    margin-top: 8px;
-  }
-
-  /* ── SERVICES ────────────────────────────── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(48px, 6vw, 96px);
-    align-items: start;
-    padding-top: 40px;
-  }
-
-  .services-grid h2 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--white);
-  }
-
-  .services-list {
-    list-style: none;
-    border-top: 1px solid rgba(255,255,255,0.15);
-  }
-
-  .services-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    font-size: 1rem;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-    transition: opacity .2s;
-  }
-  .services-list li:hover { opacity: .6; }
-  .services-list li span { font-size: 1.1rem; }
-
-  /* ── DISPLAY MARQUEE ─────────────────────── */
-  .display-section {
-    padding: var(--pad-section) var(--pad-x);
-    background: var(--black);
-    overflow: hidden;
-  }
-  .display-text {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 9vw, 8rem);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--white);
-    letter-spacing: 0.01em;
-  }
-  .display-text em {
-    font-style: italic;
-    color: rgba(255,255,255,0.45);
-  }
-  .display-footnote {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.4);
-    margin-top: 24px;
-    letter-spacing: 0.03em;
-  }
+  .founder-content p strong { color: var(--black); font-weight: 500; }
 
   /* ── MARQUEE (scrolling text band) ───────── */
   .marquee {
@@ -341,15 +284,13 @@
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
   .marquee-track {
-    display: flex;
-    width: max-content;
+    display: flex; width: max-content;
     animation: marquee-scroll 34s linear infinite;
     will-change: transform;
   }
   .marquee:hover .marquee-track { animation-play-state: paused; }
   .marquee-group {
-    display: flex;
-    align-items: center;
+    display: flex; align-items: center;
     gap: clamp(32px, 5vw, 72px);
     padding-right: clamp(32px, 5vw, 72px);
     flex-shrink: 0;
@@ -357,204 +298,152 @@
   .marquee-item {
     font-family: var(--serif);
     font-size: clamp(1.5rem, 3.2vw, 2.75rem);
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--black);
-    white-space: nowrap;
+    font-weight: 300; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--black); white-space: nowrap;
   }
-  .marquee-star {
-    font-size: 0.6em;
-    color: var(--gray-mid);
-    line-height: 1;
-  }
+  .marquee-star { font-size: 0.6em; color: var(--gray-mid); line-height: 1; }
   @keyframes marquee-scroll {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track { animation: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
-  /* ── WHO WE SERVE ────────────────────────── */
-  .serve-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(48px, 6vw, 80px);
-    align-items: center;
+  /* ── SERVICE TIERS ───────────────────────── */
+  .tier-head { text-align: center; margin-bottom: 24px; }
+  .tier-head .section-label { justify-content: center; }
+  .tier {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px); align-items: center;
+    padding: clamp(40px, 5vw, 64px) 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
   }
+  .tier:first-of-type { border-top: none; padding-top: 24px; }
+  .tier-img { aspect-ratio: 4/3; overflow: hidden; }
+  .tier-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+  .tier.reverse .tier-img { order: 2; }
+  .tier h3 {
+    font-family: var(--serif); font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-weight: 300; line-height: 1.1; text-transform: uppercase;
+    letter-spacing: 0.01em; margin-bottom: 24px;
+  }
+  .tier-meta { font-size: 0.95rem; line-height: 1.7; color: #333; margin-bottom: 20px; }
+  .tier-meta strong { font-weight: 500; }
+  .tier-list { list-style: none; margin: 0 0 28px; }
+  .tier-list li {
+    position: relative; padding-left: 22px; margin-bottom: 12px;
+    font-size: 0.95rem; line-height: 1.6; color: #444;
+  }
+  .tier-list li::before { content: '•'; position: absolute; left: 4px; color: var(--gray-mid); }
 
-  .serve-image {
-    aspect-ratio: 4/5;
-    overflow: hidden;
-  }
-  .serve-image img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .serve-content h2 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    line-height: 1.15;
-    margin-bottom: 28px;
-  }
-
-  .serve-content p {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: #444;
-    margin-bottom: 20px;
-    max-width: 460px;
-  }
-
-  .serve-content .arrow-cta {
-    color: var(--black);
-    margin-top: 16px;
-  }
-
-  /* ── INSIGHTS ────────────────────────────── */
-  .insights-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .insights-header h2 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    line-height: 1.1;
-  }
-
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-
-  .card { display: flex; flex-direction: column; }
-
-  .card-img {
-    aspect-ratio: 3/2;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
-  .card-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform .4s ease;
-  }
-  .card:hover .card-img img { transform: scale(1.03); }
-
-  .card-meta {
-    font-size: 0.6875rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-    margin-bottom: 10px;
-  }
-
-  .card h3 {
-    font-family: var(--serif);
-    font-size: 1.375rem;
-    font-weight: 300;
-    line-height: 1.25;
-    margin-bottom: 12px;
-  }
-
-  .card p {
-    font-size: 0.875rem;
-    color: #555;
-    line-height: 1.65;
-    flex: 1;
-    margin-bottom: 20px;
-  }
-
-  .text-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
+  /* ── OUTLINE PILL BUTTON ─────────────────── */
+  .btn-outline {
     display: inline-block;
-    transition: opacity .2s;
-  }
-  .text-link:hover { opacity: .5; }
-
-  /* ── NEWSLETTER ─────────────────────────── */
-  .newsletter-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(48px, 6vw, 96px);
-    align-items: center;
-  }
-
-  .newsletter-grid h2 {
     font-family: var(--serif);
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--white);
-  }
-
-  .newsletter-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .form-field {
-    border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    background: transparent;
-    color: var(--white);
-    font-family: var(--sans);
-    font-size: 0.9375rem;
-    padding: 12px 0;
-    outline: none;
-    width: 100%;
-    transition: border-color .2s;
-  }
-  .form-field::placeholder { color: rgba(255,255,255,0.35); }
-  .form-field:focus { border-bottom-color: rgba(255,255,255,0.7); }
-
-  .form-submit {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 8px;
-  }
-
-  .submit-note {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.4);
-    max-width: 220px;
-    line-height: 1.5;
-  }
-
-  .btn-submit {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--white);
+    font-size: 1.05rem; letter-spacing: 0.02em;
     color: var(--black);
-    border: none;
-    padding: 14px 28px;
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: opacity .2s;
+    border: 1px solid rgba(10,10,10,0.5);
+    border-radius: 40px;
+    padding: 15px 38px;
+    background: transparent; cursor: pointer;
+    transition: background .25s, color .25s, border-color .25s;
   }
-  .btn-submit:hover { opacity: .8; }
+  .btn-outline:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+  .btn-outline--light { color: var(--white); border-color: rgba(255,255,255,0.55); }
+  .btn-outline--light:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+  /* ── CENTERED TEXT BLOCK (Difference) ────── */
+  .centered-block { max-width: 780px; margin: 0 auto; text-align: center; }
+  .centered-block h2 {
+    font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 300; text-transform: uppercase; letter-spacing: 0.01em;
+    line-height: 1.1; margin-bottom: 24px;
+  }
+  .centered-block .rule { width: 200px; height: 1px; background: rgba(0,0,0,0.2); margin: 0 auto 32px; }
+  .centered-block p { font-size: 1.0625rem; line-height: 1.8; color: #444; margin-bottom: 18px; }
+
+  /* ── WHY (cards) ─────────────────────────── */
+  .why-head { text-align: center; margin-bottom: 56px; }
+  .why-head h2 {
+    font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 300; text-transform: uppercase; letter-spacing: 0.01em;
+  }
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .card { display: flex; flex-direction: column; }
+  .card-img { aspect-ratio: 3/2; overflow: hidden; margin-bottom: 22px; }
+  .card-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(1) contrast(1.05); transition: transform .4s ease;
+  }
+  .card:hover .card-img img { transform: scale(1.04); }
+  .card h3 {
+    font-family: var(--serif); font-size: 1.5rem; font-weight: 300;
+    text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.2; margin-bottom: 12px;
+  }
+  .card p { font-size: 0.9375rem; color: #555; line-height: 1.7; }
+
+  /* ── FAQ ─────────────────────────────────── */
+  .faq-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+  .faq-eyebrow { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--gray-mid); margin-bottom: 16px; }
+  .faq-media { aspect-ratio: 4/5; overflow: hidden; }
+  .faq-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4) sepia(0.2); }
+  .faq h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 300; text-transform: uppercase; line-height: 1.1; margin-bottom: 32px; }
+  .faq-item { border-top: 1px solid rgba(0,0,0,0.15); }
+  .faq-item:last-child { border-bottom: 1px solid rgba(0,0,0,0.15); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 22px 0; font-family: var(--sans); font-size: 1.0625rem; color: var(--black);
+  }
+  .faq-q .plus { font-size: 1.4rem; transition: transform .3s; flex-shrink: 0; line-height: 1; }
+  .faq-item.open .faq-q .plus { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .faq-a p { padding: 0 0 22px; font-size: 0.95rem; line-height: 1.7; color: #555; max-width: 92%; }
+  .faq-item.open .faq-a { max-height: 360px; }
+
+  /* ── TESTIMONIALS ────────────────────────── */
+  .testi-head { text-align: center; margin-bottom: 8px; }
+  .testi-head h2 { font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 300; text-transform: uppercase; letter-spacing: 0.01em; color: var(--white); }
+  .testi-head h2 em { font-style: italic; color: rgba(255,255,255,0.55); }
+  .testi-rule { width: 200px; height: 1px; background: rgba(255,255,255,0.3); margin: 24px auto 64px; }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 4vw, 56px); }
+  .testi { text-align: center; }
+  .testi-avatar {
+    width: 116px; height: 116px; border-radius: 50%; margin: 0 auto 28px;
+    border: 1px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 2.5rem; color: rgba(255,255,255,0.8);
+  }
+  .testi p { font-size: 0.95rem; line-height: 1.7; font-style: italic; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
+  .testi cite { font-style: normal; font-weight: 500; font-size: 0.9rem; color: var(--white); }
+
+  /* ── MISSION ─────────────────────────────── */
+  .mission { text-align: center; }
+  .mission h2 {
+    font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 3.25rem);
+    font-weight: 300; text-transform: uppercase; line-height: 1.2;
+    color: var(--white); max-width: 920px; margin: 0 auto 24px; letter-spacing: 0.01em;
+  }
+  .mission p { color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+
+  /* ── CONTACT ─────────────────────────────── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+  .contact-copy h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 300; text-transform: uppercase; line-height: 1.1; margin-bottom: 28px; }
+  .contact-copy p { font-size: 1rem; line-height: 1.75; color: #444; margin-bottom: 18px; max-width: 520px; }
+  .contact-copy p .strong { font-weight: 600; color: var(--black); }
+  .contact-media { aspect-ratio: 3/2; overflow: hidden; margin: 32px 0; }
+  .contact-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+  .contact-alt { font-size: 0.95rem; color: #444; }
+  .contact-alt a { border-bottom: 1px solid currentColor; }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .field label { display: block; font-size: 0.8rem; letter-spacing: 0.03em; color: #555; margin-bottom: 8px; }
+  .field input, .field textarea {
+    width: 100%; background: var(--white); border: 1px solid rgba(0,0,0,0.2);
+    padding: 12px 14px; font-family: var(--sans); font-size: 0.95rem; color: var(--black);
+    outline: none; transition: border-color .2s;
+  }
+  .field input:focus, .field textarea:focus { border-color: var(--black); }
+  .field textarea { resize: vertical; min-height: 120px; }
 
   /* ── FOOTER ──────────────────────────────── */
   footer {
@@ -562,324 +451,50 @@
     color: var(--white);
     padding: clamp(48px, 6vw, 80px) var(--pad-x) 32px;
   }
-
   .footer-top {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1fr;
     gap: 40px;
     padding-bottom: 48px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
-
   .footer-brand .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-flex; align-items: center; gap: 10px;
     border: 1px solid rgba(255,255,255,0.4);
-    padding: 6px 14px;
-    display: inline-flex;
-    margin-bottom: 20px;
+    padding: 6px 14px; margin-bottom: 20px;
   }
-  .footer-brand .footer-logo img {
-    height: 24px;
-    width: auto;
-    filter: brightness(0) invert(1);
-  }
-  .footer-brand .footer-logo-text {
-    font-family: var(--serif);
-    font-size: 0.8125rem;
-    letter-spacing: 0.07em;
-    color: var(--white);
-  }
-
-  .footer-brand p {
-    font-size: 0.8125rem;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.7;
-    max-width: 240px;
-  }
-
-  .footer-col h4 {
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 20px;
-  }
-
+  .footer-brand .footer-logo img { height: 24px; width: auto; filter: brightness(0) invert(1); }
+  .footer-brand .footer-logo-text { font-family: var(--serif); font-size: 0.8125rem; letter-spacing: 0.07em; color: var(--white); }
+  .footer-brand p { font-size: 0.8125rem; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 260px; }
+  .footer-col h4 { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
   .footer-col ul { list-style: none; }
   .footer-col ul li { margin-bottom: 12px; }
-  .footer-col ul li a {
-    font-size: 0.9375rem;
-    color: var(--white);
-    transition: opacity .2s;
-  }
+  .footer-col ul li a { font-size: 0.9375rem; color: var(--white); transition: opacity .2s; }
   .footer-col ul li a:hover { opacity: .5; }
-
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 24px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .footer-bottom p {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.3);
-  }
-
-  .footer-bottom-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-  .footer-bottom-links a {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.3);
-    transition: color .2s;
-  }
-  .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+  .footer-bottom { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; padding-top: 24px; text-align: center; }
+  .footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+  .footer-bottom a { font-size: 0.75rem; color: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.3); }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.8); }
 
   /* ── RESPONSIVE ──────────────────────────── */
-  /* ── CAROUSEL ────────────────────────────── */
-  .carousel {
-    background: var(--black);
-    overflow: hidden;
-  }
-
-  .carousel-slides {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/7;
-    overflow: hidden;
-  }
-
-  .carousel-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-  }
-  .carousel-slide.active { opacity: 1; }
-
-  .carousel-slide img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .carousel-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 5vw, 80px);
-    padding: clamp(36px, 5vw, 56px) var(--pad-x);
-    align-items: end;
-  }
-
-  .carousel-left { display: flex; flex-direction: column; gap: 28px; }
-
-  .carousel-headlines { position: relative; min-height: 7rem; }
-
-  .carousel-headline {
-    position: absolute;
-    top: 0; left: 0;
-    font-family: var(--serif);
-    font-size: clamp(1.75rem, 3.5vw, 3rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--white);
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    pointer-events: none;
-  }
-  .carousel-headline.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .carousel-controls {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .carousel-btn {
-    width: 36px; height: 36px;
-    border: 1px solid rgba(255,255,255,0.45);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--white);
-    font-size: 0.875rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: border-color .2s, background .2s;
-    flex-shrink: 0;
-  }
-  .carousel-btn:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
-
-  .carousel-dots {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .carousel-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.5);
-    background: transparent;
-    cursor: pointer;
-    transition: background .3s, border-color .3s;
-    padding: 0;
-  }
-  .carousel-dot.active {
-    background: var(--white);
-    border-color: var(--white);
-  }
-
-  .carousel-right { display: flex; flex-direction: column; gap: 20px; }
-
-  .carousel-descs { position: relative; min-height: 130px; width: 100%; }
-
-  .carousel-desc {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.65);
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-    pointer-events: none;
-  }
-  .carousel-desc.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .carousel-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.875rem;
-    letter-spacing: 0.04em;
-    color: var(--white);
-    transition: gap .25s;
-    margin-top: 4px;
-  }
-  .carousel-cta:hover { gap: 18px; }
-  .carousel-cta .circle {
-    width: 36px; height: 36px;
-    border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem;
-    transition: border-color .25s, transform .25s;
-  }
-  .carousel-cta:hover .circle { border-color: var(--white); transform: translateX(4px); }
-
   @media (max-width: 900px) {
-    .carousel-slides { aspect-ratio: 4/3; }
-    .carousel-body { grid-template-columns: 1fr; gap: 24px; }
-    .carousel-headlines { min-height: 5rem; }
-    .carousel-descs { position: static; min-height: auto; }
-    .carousel-desc { position: static; opacity: 1; transform: none; display: none; }
-    .carousel-desc.active { display: block; }
-  }
-
-  @media (max-width: 900px) {
-    .hero-text { grid-template-columns: 1fr; }
-
-    .about-grid,
-    .services-grid,
-    .serve-grid,
-    .newsletter-grid { grid-template-columns: 1fr; }
-
-    .cards-grid { grid-template-columns: 1fr 1fr; }
-
+    .hero-text,
+    .founder-grid,
+    .tier,
+    .faq-grid,
+    .contact-grid { grid-template-columns: 1fr; }
+    .cat-grid, .testi-grid, .cards-grid { grid-template-columns: 1fr 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
-
-    .serve-image { aspect-ratio: 16/9; order: -1; }
-
-    .nav-links .nav-hide { display: none; }
-  }
-
-  /* ── FOUNDER ─────────────────────────────── */
-  .founder-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(48px, 6vw, 80px);
-    align-items: center;
-    padding-top: 40px;
-  }
-
-  .founder-photo {
-    aspect-ratio: 3/4;
-    overflow: hidden;
-  }
-
-  .founder-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .founder-photo-placeholder {
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(0,0,0,0.15);
-    background: var(--gray-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .founder-photo-placeholder span {
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-  }
-
-  .founder-headline {
-    font-family: var(--serif);
-    font-size: clamp(2.25rem, 4.5vw, 4rem);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    margin-bottom: 32px;
-  }
-
-  .founder-content p {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: #444;
-    margin-bottom: 20px;
-    max-width: 480px;
-  }
-
-  .founder-content p strong {
-    color: var(--black);
-    font-weight: 500;
-  }
-
-  @media (max-width: 900px) {
-    .founder-grid { grid-template-columns: 1fr; }
+    .tier.reverse .tier-img { order: 0; }
     .founder-photo { aspect-ratio: 4/3; }
+    .field-row { grid-template-columns: 1fr; }
+    .nav-links .nav-hide { display: none; }
   }
 
   @media (max-width: 600px) {
     :root { --pad-x: 20px; }
-    .cards-grid { grid-template-columns: 1fr; }
+    .cat-grid, .testi-grid, .cards-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
-    .insights-header { flex-direction: column; align-items: flex-start; }
-    .form-submit { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .display-text { font-size: clamp(2.25rem, 10vw, 3.5rem); }
   }
 </style>
 </head>
@@ -892,113 +507,81 @@
     <span class="nav-logo-text">EverPath<br>Personalized Services</span>
   </a>
   <ul class="nav-links">
-    <li class="nav-hide"><a href="#about">The Firm</a></li>
-    <li class="nav-hide"><a href="#services">Our Services</a></li>
-    <li class="nav-hide"><a href="#insights">Insights</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    <li class="nav-hide"><a href="#services">Services</a></li>
+    <li class="nav-hide"><a href="#difference">The Difference</a></li>
+    <li class="nav-hide"><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Me</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO TEXT ──────────────────────────────── -->
+<!-- ── HERO ─────────────────────────────────── -->
 <div class="hero-text">
   <h1><strong>Build</strong> with<br>EverPath</h1>
   <div class="hero-text-right">
-    <p>EverPath is your trusted partner for personalized financial planning — helping families navigate Medicaid, OPWDD, Self-Direction, retirement, and every step in between.</p>
-    <a href="#about" class="arrow-cta" style="color:var(--white);">
-      Discover Our Approach
+    <p class="lead">Your path. Your choice. Our support.</p>
+    <p>Personalized guidance for Medicaid, OPWDD, and Self-Direction.</p>
+    <a href="#contact" class="arrow-cta" style="color:var(--white);">
+      Work With Me
       <span class="circle">→</span>
     </a>
   </div>
 </div>
 
-<!-- ── CAROUSEL ──────────────────────────────── -->
-<div class="carousel">
-  <div class="carousel-slides">
-    <div class="carousel-slide active">
-      <img src="./EverPath Personalized Services_files/unsplash-image-ZWbBxZ6zTwM.jpg" alt="Family at sunset">
-    </div>
-    <div class="carousel-slide">
-      <img src="./EverPath Personalized Services_files/unsplash-image-HJckKnwCXxQ.jpg" alt="Financial consultation">
-    </div>
-    <div class="carousel-slide">
-      <img src="./EverPath Personalized Services_files/unsplash-image-3WgkTDw7XyE.jpg" alt="Mother and daughter">
-    </div>
+<!-- ── INTRO ────────────────────────────────── -->
+<section id="intro">
+  <div class="intro">
+    <img class="intro-logo" src="./EverPath Personalized Services_files/logo+88+(1).png" alt="EverPath heart logo">
+    <p>Navigating disability services requires experience, structure, and trusted guidance. EverPath works alongside individuals and families to simplify complex systems and create clear paths forward.</p>
   </div>
-  <div class="carousel-body">
-    <div class="carousel-left">
-      <div class="carousel-headlines">
-        <h2 class="carousel-headline active">Building Legacies Worth Passing On</h2>
-        <h2 class="carousel-headline">Expert Guidance You Can Count On</h2>
-        <h2 class="carousel-headline">Protecting What Matters Most</h2>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="carousel-prev">←</button>
-        <div class="carousel-dots">
-          <button class="carousel-dot active"></button>
-          <button class="carousel-dot"></button>
-          <button class="carousel-dot"></button>
-        </div>
-        <button class="carousel-btn" id="carousel-next">→</button>
-      </div>
-    </div>
-    <div class="carousel-right">
-      <div class="carousel-descs">
-        <p class="carousel-desc active">EverPath works with families at every stage to create financial plans that outlast a lifetime — securing your legacy for the people you love most.</p>
-        <p class="carousel-desc">Our advisors bring decades of experience to every client relationship, offering personalized strategies built around your goals, not a generic template.</p>
-        <p class="carousel-desc">From life insurance to estate planning, we help you build the safety net your family deserves — because peace of mind is a financial goal too.</p>
-      </div>
-      <a href="#services" class="carousel-cta">
-        Learn More
-        <span class="circle">→</span>
-      </a>
-    </div>
-  </div>
-</div>
+</section>
 
-<!-- ── ABOUT ─────────────────────────────────── -->
-<section id="about">
-  <div class="section-label dark">About Us</div>
-  <div class="about-grid">
-    <div>
-      <h2>Delivering for Families &amp; Individuals</h2>
-      <a href="#services" class="arrow-cta" style="color:var(--black); margin-top:32px;">
-        Explore Our Services
-        <span class="circle">→</span>
-      </a>
-    </div>
-    <div>
-      <p>EverPath Personalized Services is a boutique financial planning firm dedicated to helping families and individuals build lasting financial security. We combine deep expertise with a deeply personal approach — because your path is yours alone.</p>
-      <p>Whether you're planning for retirement, buying your first home, or building generational wealth, we meet you where you are and chart a course that fits your life.</p>
-      <div class="stat-block">
-        <div class="stat-number">20+</div>
-        <div class="stat-label">Years of Experience</div>
-        <div class="stat-footnote">Serving clients across the United States since 2004.</div>
+<!-- ── SERVICES & SUPPORT CATEGORIES ────────── -->
+<section id="categories">
+  <div class="cat-head">
+    <div class="section-label dark">Services &amp; Support Categories</div>
+    <h2>Explore what Self-Direction can make possible.</h2>
+    <p>Through Self-Direction, individuals can explore a variety of supports that promote independence, choice, and meaningful opportunities.</p>
+  </div>
+  <div class="cat-grid">
+    <a href="#services" class="cat-tile">
+      <img src="./EverPath Personalized Services_files/unsplash-image-Hh18POSx5qk.jpg" alt="Housing support">
+      <span><em>Housing</em></span>
+    </a>
+    <a href="#services" class="cat-tile">
+      <img src="./EverPath Personalized Services_files/unsplash-image-vE8Z5jzFS64.jpg" alt="Technology support">
+      <span><em>Technology</em></span>
+    </a>
+    <a href="#services" class="cat-tile">
+      <img src="./EverPath Personalized Services_files/unsplash-image-FBn56kNagVo.jpg" alt="Transportation support">
+      <span><em>Transportation</em></span>
+    </a>
+  </div>
+  <a href="#services" class="arrow-cta" style="color:var(--black);">
+    Discover What's Possible
+    <span class="circle">→</span>
+  </a>
+</section>
+
+<!-- ── FOUNDER ──────────────────────────────── -->
+<section id="founder">
+  <div class="section-label dark">Meet the Founder</div>
+  <div class="founder-grid">
+    <div class="founder-photo">
+      <div class="founder-photo-placeholder">
+        <span>Founder Photo</span>
       </div>
+    </div>
+    <div class="founder-content">
+      <h2 class="founder-headline">Strategic Support.<br>Meaningful Outcomes.</h2>
+      <p><strong>Hi, I'm the Founder and CEO of EverPath Personalized Services, and an authorized Independent Support Broker in New York State.</strong></p>
+      <p>My journey into Self-Direction began with seeing how complex and overwhelming disability support systems can feel for families. Navigating programs, understanding available resources, and making informed decisions often requires the right guidance, structure, and support.</p>
+      <p>Through EverPath, I provide families with clarity, organization, and strategic guidance throughout their Self-Direction journey. My goal is to help families better understand their options, navigate processes with confidence, and identify supports that align with their loved one's goals and needs.</p>
+      <p>With a background in Industrial Engineering and Project Management, I bring a structured, solutions-focused approach to a system that can often feel complicated and difficult to navigate.</p>
     </div>
   </div>
 </section>
 
-<!-- ── SERVICES ───────────────────────────────── -->
-<section id="services" class="black">
-  <div class="section-label">Our Services</div>
-  <div class="services-grid">
-    <div>
-      <h2>Personalized Guidance at Every Stage of Life</h2>
-    </div>
-    <div>
-      <ul class="services-list">
-        <li>Retirement &amp; Income Planning <span>→</span></li>
-        <li>Home Buying &amp; Mortgage Planning <span>→</span></li>
-        <li>Education Savings (529 &amp; ESA) <span>→</span></li>
-        <li>Estate &amp; Legacy Planning <span>→</span></li>
-        <li>Life Insurance &amp; Protection <span>→</span></li>
-        <li>Tax-Efficient Investment Strategies <span>→</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ── MARQUEE ────────────────────────────────── -->
+<!-- ── MARQUEE ──────────────────────────────── -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <div class="marquee-group">
@@ -1018,117 +601,209 @@
   </div>
 </div>
 
-<!-- ── DISPLAY ────────────────────────────────── -->
-<div class="display-section">
-  <div class="display-text">
-    Build wealth <em>with</em><br>
-    people who know<br>
-    your name.
+<!-- ── SERVICE TIERS ────────────────────────── -->
+<section id="services">
+  <div class="tier-head">
+    <div class="section-label dark">How We Work Together</div>
   </div>
-  <p class="display-footnote">Investment and planning services involve risk, including possible loss of principal.</p>
-</div>
 
-<!-- ── WHO WE SERVE ───────────────────────────── -->
-<section id="who-we-serve">
-  <div class="serve-grid">
-    <div class="serve-image">
-      <img src="./EverPath Personalized Services_files/unsplash-image-ZWbBxZ6zTwM.jpg" alt="Family at sunset">
+  <!-- Tier 1 -->
+  <div class="tier">
+    <div class="tier-img">
+      <img src="./EverPath Personalized Services_files/unsplash-image-HJckKnwCXxQ.jpg" alt="Reviewing documents together">
     </div>
-    <div class="serve-content">
-      <div class="section-label dark">Who We Serve</div>
-      <h2>Institutional quality for individual investors</h2>
-      <p>We believe every family deserves access to the same sophisticated financial planning strategies typically reserved for high-net-worth clients. Our approach scales to meet your goals — not the other way around.</p>
-      <p>From young professionals starting out, to parents building toward their children's futures, to retirees protecting what they've earned — EverPath is your partner at every stage.</p>
-      <a href="#contact" class="arrow-cta" style="margin-top:16px;">
-        Start Your Plan
-        <span class="circle">→</span>
-      </a>
+    <div class="tier-content">
+      <h3>Foundational Guidance</h3>
+      <p class="tier-meta"><strong>Ideal for:</strong> Families just starting to navigate disability services and Medicaid.<br>
+      <strong>Duration:</strong> 60 minutes<br>
+      <strong>Investment:</strong> $150</p>
+      <ul class="tier-list">
+        <li>Understand your loved one's eligibility for OPWDD/Medicaid Waiver services.</li>
+        <li>Get clarity on next steps and required documents.</li>
+        <li>Leave with a personalized action plan.</li>
+      </ul>
+      <a href="#contact" class="btn-outline">I'm Ready to Launch</a>
+    </div>
+  </div>
+
+  <!-- Tier 2 -->
+  <div class="tier reverse">
+    <div class="tier-img">
+      <img src="./EverPath Personalized Services_files/unsplash-image-3WgkTDw7XyE.jpg" alt="Family working together">
+    </div>
+    <div class="tier-content">
+      <h3>The Navigation Partnership</h3>
+      <p class="tier-meta"><strong>Ideal for:</strong> Families actively applying for OPWDD/Medicaid Waiver services.<br>
+      <strong>Duration:</strong> 8 weeks<br>
+      <strong>Investment:</strong> $450</p>
+      <ul class="tier-list">
+        <li>Step-by-step guidance through the full application process.</li>
+        <li>Document preparation and submission support.</li>
+        <li>Direct support in English or Spanish, whichever you're most comfortable in.</li>
+        <li>Bi-weekly check-ins so you're never lost in the system.</li>
+      </ul>
+      <a href="#contact" class="btn-outline">I'm Ready to Move Forward</a>
+    </div>
+  </div>
+
+  <!-- Tier 3 -->
+  <div class="tier">
+    <div class="tier-img">
+      <img src="./EverPath Personalized Services_files/unsplash-image-leLj_06wjJQ.jpg" alt="Planning and paperwork">
+    </div>
+    <div class="tier-content">
+      <h3>Ongoing Support Brokerage</h3>
+      <p class="tier-meta"><strong>Ideal for:</strong> Families approved for Self-Direction who want an experienced, trusted, bilingual broker.<br>
+      <strong>Duration:</strong> Ongoing partnership<br>
+      <strong>Investment:</strong> Covered by your approved Medicaid Self-Direction budget — no extra cost to your family.</p>
+      <ul class="tier-list">
+        <li>Build and manage your Circle of Support.</li>
+        <li>Budget planning and ongoing oversight.</li>
+        <li>Staff recruiting and coordination support.</li>
+        <li>Year-round guidance in your language, on your terms.</li>
+      </ul>
+      <a href="#contact" class="btn-outline">Let's Talk About Your Options</a>
     </div>
   </div>
 </section>
 
-<!-- ── FOUNDER ──────────────────────────────────── -->
-<section id="founder">
-  <div class="section-label dark">Meet the Founder</div>
-  <div class="founder-grid">
-    <div class="founder-photo">
-      <div class="founder-photo-placeholder">
-        <span>Founder Photo</span>
-      </div>
-    </div>
-    <div class="founder-content">
-      <h2 class="founder-headline">Strategic Support.<br>Meaningful Outcomes.</h2>
-      <p><strong>Hi, I'm the Founder and CEO of EverPath Personalized Services, and an authorized Independent Support Broker in New York State.</strong></p>
-      <p>As a certified Self-Direction broker, I help individuals with disabilities and their families navigate the OPWDD Self-Direction program — empowering people to design the supports they need to live the life they choose.</p>
-      <p>My background in Industrial Engineering gives me a systems-thinking approach to every plan I build: efficient, comprehensive, and designed to grow with you.</p>
-      <a href="#contact" class="arrow-cta" style="color:var(--black); margin-top:8px;">
-        Work With Me
-        <span class="circle">→</span>
-      </a>
-    </div>
+<!-- ── THE EVERPATH DIFFERENCE ──────────────── -->
+<section id="difference" class="gray">
+  <div class="centered-block">
+    <h2>The EverPath Difference</h2>
+    <div class="rule"></div>
+    <p>Every individual has unique goals, strengths, and needs. EverPath takes a personalized approach to support individuals and families through every step of the process.</p>
+    <p>With experience, attention to detail, and a commitment to quality service, we help families feel informed, supported, and confident in their decisions.</p>
   </div>
 </section>
 
-<!-- ── INSIGHTS ───────────────────────────────── -->
-<section id="insights" class="gray">
-  <div class="insights-header">
-    <div>
-      <div class="section-label dark">News &amp; Insights</div>
-      <h2>Featured Stories</h2>
-    </div>
-    <a href="#" class="text-link">View All Insights</a>
+<!-- ── WHY EVERPATH ─────────────────────────── -->
+<section id="why">
+  <div class="why-head">
+    <h2>Why EverPath?</h2>
   </div>
   <div class="cards-grid">
     <div class="card">
       <div class="card-img">
-        <img src="./EverPath Personalized Services_files/unsplash-image-HJckKnwCXxQ.jpg" alt="Financial consultation">
+        <img src="./EverPath Personalized Services_files/unsplash-image-HJckKnwCXxQ.jpg" alt="Personalized guidance">
       </div>
-      <div class="card-meta">Financial Planning · June 2026</div>
-      <h3>The 5 Conversations Every Family Should Have Before Retirement</h3>
-      <p>Retirement readiness isn't just about account balances — it's about aligning expectations, goals, and contingencies with everyone who matters.</p>
-      <a href="#" class="text-link">Read More</a>
+      <h3>Personalized Guidance</h3>
+      <p>We support individuals in exploring career interests, building skills, gaining confidence, and working toward meaningful employment opportunities and greater independence.</p>
     </div>
     <div class="card">
       <div class="card-img">
-        <img src="./EverPath Personalized Services_files/unsplash-image-Hh18POSx5qk.jpg" alt="Home buying">
+        <img src="./EverPath Personalized Services_files/unsplash-image-3WgkTDw7XyE.jpg" alt="Family-centered support">
       </div>
-      <div class="card-meta">Home Buying · May 2026</div>
-      <h3>First-Time Buyer? What the 2026 Market Means for You</h3>
-      <p>Rising rates and inventory shifts are reshaping the homebuying landscape. Here's how to position yourself for long-term success, not just the right moment.</p>
-      <a href="#" class="text-link">Read More</a>
+      <h3>Family-Centered Support</h3>
+      <p>Through Self-Direction, EverPath helps individuals access important activities, opportunities, and community resources — including transportation such as taxi, Uber, and Lyft.</p>
     </div>
     <div class="card">
       <div class="card-img">
-        <img src="./EverPath Personalized Services_files/unsplash-image-leLj_06wjJQ.jpg" alt="Financial records">
+        <img src="./EverPath Personalized Services_files/unsplash-image-Hh18POSx5qk.jpg" alt="Strategic planning">
       </div>
-      <div class="card-meta">Tax Strategy · April 2026</div>
-      <h3>Tax-Loss Harvesting: Turning Market Dips into Long-Term Gains</h3>
-      <p>A downturn doesn't have to mean losses. Smart tax-loss harvesting can reduce your bill today and strengthen your portfolio for tomorrow.</p>
-      <a href="#" class="text-link">Read More</a>
+      <h3>Strategic Planning</h3>
+      <p>We help individuals access living supports through Self-Direction — supports that promote safe, stable, and independent living and help maintain a home environment.</p>
     </div>
   </div>
 </section>
 
-<!-- ── NEWSLETTER ─────────────────────────────── -->
-<section id="contact" class="black">
-  <div class="newsletter-grid">
+<!-- ── FAQ ──────────────────────────────────── -->
+<section id="faq" class="gray">
+  <div class="faq-grid">
     <div>
-      <div class="section-label">Stay Connected</div>
-      <h2>Sign up for our latest insights and firm announcements.</h2>
-    </div>
-    <form class="newsletter-form" onsubmit="return false;">
-      <input class="form-field" type="email" placeholder="Email Address *">
-      <input class="form-field" type="text" placeholder="First Name *">
-      <input class="form-field" type="text" placeholder="Last Name *">
-      <div class="form-submit">
-        <p class="submit-note">By submitting, you consent to receive email from EverPath. See our Privacy Policy.</p>
-        <button class="btn-submit" type="submit">Submit →</button>
+      <div class="faq-eyebrow">frequently asked questions</div>
+      <div class="faq-media">
+        <img src="./EverPath Personalized Services_files/unsplash-image-leLj_06wjJQ.jpg" alt="Magnifying details">
       </div>
+    </div>
+    <div class="faq">
+      <h2>You Might Be Wondering…</h2>
+      <!-- NOTE: answer copy below is suggested placeholder text — replace with EverPath's own wording. -->
+      <div class="faq-item">
+        <button class="faq-q">What is Self-Direction? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Self-Direction is a Medicaid program that lets individuals with developmental disabilities and their families decide how their approved services and supports are chosen and delivered — giving you the flexibility to build a plan around your loved one's goals.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How Can Self-Direction Help? <span class="plus">+</span></button>
+        <div class="faq-a"><p>It gives families the freedom to design supports around real life — from community activities and skill-building to hiring the right staff — while a broker helps you plan a budget and stay on track.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will you help us with the paperwork? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes. From eligibility documents to budgets and submissions, EverPath guides you through every form and deadline so nothing falls through the cracks.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ─────────────────────────── -->
+<section id="testimonials" class="black">
+  <div class="testi-head">
+    <h2>Don't Take <em>My Word</em> For It…</h2>
+    <div class="testi-rule"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="testi-avatar">“</div>
+      <p>"EverPath made what felt overwhelming simple. Every step was clearly explained, and we always felt informed and supported throughout the Self-Direction process."</p>
+      <cite>— Parent of an OPWDD Participant</cite>
+    </div>
+    <div class="testi">
+      <div class="testi-avatar">“</div>
+      <p>"Working with EverPath gave our family the confidence to move forward. The guidance was clear, responsive, and made navigating Medicaid and Self-Direction much easier."</p>
+      <cite>— Family member supporting a loved one diagnosed with autism</cite>
+    </div>
+    <!-- NOTE: replaces a leftover template testimonial ("Camille's coaching… Artist & Creative Director") that is unrelated to EverPath. -->
+    <div class="testi">
+      <div class="testi-avatar">“</div>
+      <p>"EverPath's guidance took the stress out of a process I never thought I could manage alone. I finally feel confident about my son's future."</p>
+      <cite>— Self-Direction Family, New York</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION ──────────────────────────────── -->
+<section id="mission" class="black">
+  <div class="mission">
+    <h2>Our mission is simple: provide families with the guidance, resources, and confidence needed to create a successful path forward.</h2>
+    <p>Take the first step toward clarity, support, and a plan built around what matters most.</p>
+    <a href="#contact" class="btn-outline btn-outline--light">Book Your Complimentary Clarity Call</a>
+  </div>
+</section>
+
+<!-- ── CONTACT ──────────────────────────────── -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-copy">
+      <h2>Why Families Choose EverPath</h2>
+      <p>Got questions? Starting the Self-Direction journey can feel overwhelming. There are many steps, decisions, and important details to understand — and having the right guidance can make all the difference.</p>
+      <p>At EverPath, we believe families deserve more than just information; they deserve someone who listens, understands their goals, and walks alongside them through the process. We are here to provide clarity, support, and personalized guidance so you can move forward with confidence.</p>
+      <p>Whether you are just beginning to explore Self-Direction or looking for support along the way, EverPath is here to help you understand your options and create a path that reflects what matters most to you and your family.</p>
+      <p><span class="strong">Ready to chat? Let's start with a Complimentary Clarity Call.</span><br>Because your journey deserves care, clarity, and a partner who truly gets you.</p>
+      <div class="contact-media">
+        <img src="./EverPath Personalized Services_files/unsplash-image-FBn56kNagVo.jpg" alt="Steps forward">
+      </div>
+      <!-- NOTE: contact details are placeholders — the live site currently shows a leftover 'theelevatedwoman.com' email and an (888) 888-8888 number. -->
+      <p class="contact-alt">Not feeling the form? Reach out directly:<br>
+      <a href="mailto:hello@everpathservices.com">hello@everpathservices.com</a> · (000) 000-0000</p>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="field-row">
+        <div class="field"><label>First Name *</label><input type="text" required></div>
+        <div class="field"><label>Last Name *</label><input type="text" required></div>
+      </div>
+      <div class="field"><label>Phone *</label><input type="tel" placeholder="+1" required></div>
+      <div class="field"><label>Email *</label><input type="email" required></div>
+      <div class="field-row">
+        <div class="field"><label>Desired Date *</label><input type="date" required></div>
+        <div class="field"><label>Desired Time * (Eastern)</label><input type="time" required></div>
+      </div>
+      <div class="field"><label>Tell me anything you'd like me to know going into our call</label><textarea></textarea></div>
+      <button type="submit" class="btn-outline">Let's Connect</button>
     </form>
   </div>
 </section>
 
-<!-- ── FOOTER ─────────────────────────────────── -->
+<!-- ── FOOTER ───────────────────────────────── -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -1136,85 +811,46 @@
         <img src="./EverPath Personalized Services_files/logo+88+(1).png" alt="EverPath logo">
         <span class="footer-logo-text">EverPath</span>
       </a>
-      <p>A personalized financial planning firm dedicated to helping families build lasting security — one step at a time.</p>
+      <p>Personalized guidance for Medicaid, OPWDD, and Self-Direction — helping families navigate disability services with clarity and confidence.</p>
     </div>
     <div class="footer-col">
-      <h4>Quick Links</h4>
+      <h4>Explore</h4>
       <ul>
-        <li><a href="#about">The Firm</a></li>
-        <li><a href="#services">Our Services</a></li>
-        <li><a href="#who-we-serve">Who We Serve</a></li>
-        <li><a href="#founder">The Founder</a></li>
-        <li><a href="#insights">Insights</a></li>
+        <li><a href="#founder">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Social</h4>
+      <h4>Connect</h4>
       <ul>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Get in Touch</h4>
-      <ul>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#">Our Offices</a></li>
-        <li><a href="#">Client Login</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Book a Clarity Call</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 EverPath Personalized Services. All rights reserved.</p>
-    <ul class="footer-bottom-links">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms of Use</a></li>
-      <li><a href="#">Disclosures</a></li>
-    </ul>
+    <p>© 2026 EverPath Personalized Services</p>
+    <a href="#">Site Credit</a>
   </div>
 </footer>
 
 <script>
+  // FAQ accordion
   (function () {
-    const slides    = document.querySelectorAll('.carousel-slide');
-    const headlines = document.querySelectorAll('.carousel-headline');
-    const descs     = document.querySelectorAll('.carousel-desc');
-    const dots      = document.querySelectorAll('.carousel-dot');
-    const prev      = document.getElementById('carousel-prev');
-    const next      = document.getElementById('carousel-next');
-    let current = 0;
-    let timer;
-
-    function goTo(n) {
-      [slides, headlines, descs, dots].forEach(list => {
-        list[current].classList.remove('active');
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        item.classList.toggle('open');
       });
-      current = (n + slides.length) % slides.length;
-      [slides, headlines, descs, dots].forEach(list => {
-        list[current].classList.add('active');
-      });
-    }
-
-    function advance() { goTo(current + 1); }
-
-    function resetTimer() {
-      clearInterval(timer);
-      timer = setInterval(advance, 5000);
-    }
-
-    prev.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
-    next.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
-    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
-
-    timer = setInterval(advance, 5000);
+    });
   })();
 
   // Scroll-aware nav: switch to light theme while floating over light sections
   (function () {
     const nav = document.querySelector('nav');
     const lightSections = Array.from(
-      document.querySelectorAll('#about, #who-we-serve, #founder, #insights')
+      document.querySelectorAll('#intro, #categories, #founder, #services, #difference, #why, #faq, #contact')
     );
     let ticking = false;
 
